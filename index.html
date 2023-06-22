@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Farhan | Login Page</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.5/dist/full.css" rel="stylesheet" type="text/css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							poppins: "Poppins",
+						},
+					},
+				},
+			};
+		</script>
+	</head>
+	<body class="w-full h-screen flex justify-center items-center font-poppins bg-[#EDF3FF]">
+		<div class="flex h-[600px]">
+			<div class="box-1 bg-white w-[400px] h-[450px] p-14 rounded-2xl my-auto">
+				<div class="mb-5">
+					<h1 class="text-2xl font-bold">Sign Up</h1>
+				</div>
+				<div class="mb-5">
+					<label class="font-semibold text-xs mb-3">Username or email</label>
+					<input type="email" class="input border-[#D3D6E0] input-bordered w-full max-w-xs" name="email" required />
+					<p class="email-error text-xs font-semibold text-red-500 mt-1 hidden">Email belum sesuai format email</p>
+					<p class="email-success text-xs font-semibold text-green-500 mt-1 hidden">Email sudah sesuai format email</p>
+				</div>
+				<div class="mb-5">
+					<label class="font-semibold text-xs mb-3">Password</label>
+					<input type="password" class="input border-[#D3D6E0] input-bordered w-full max-w-xs" name="password" required />
+				</div>
+				<div class="mb-5 flex gap-5">
+					<button class="bg-[#4D49E8] p-3 w-[120px] rounded-full text-white text-xs font-semibold">Sign In</button>
+					<p class="my-auto text-xs font-semibold">Forgot your password?</p>
+				</div>
+				<div class="mt-10 flex flex-col items-center">
+					<p class="text-xs font-semibold">Don't have an account?</p>
+					<p class="text-xs font-semibold underline">Sign Up</p>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const email = document.querySelector("input[name=email]");
+			const email_error = document.querySelector("p.email-error");
+			const email_success = document.querySelector("p.email-success");
+			const password = document.querySelector("input[name=password]");
+
+			email.addEventListener("input", function () {
+				const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+				if (!isValidEmail) {
+					email.classList.remove("border-[#D3D6E0]");
+					email.classList.add("border-red-500");
+					email.classList.remove("border-green-500");
+					email_error.classList.remove("hidden");
+					email_success.classList.add("hidden");
+				} else {
+					email.classList.remove("border-[#D3D6E0]");
+					email.classList.remove("border-red-500");
+					email.classList.add("border-green-500");
+					email_success.classList.remove("hidden");
+					email_error.classList.add("hidden");
+				}
+			});
+		</script>
+	</body>
+</html>
